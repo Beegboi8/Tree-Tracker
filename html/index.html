@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <title>Tree Tracker</title>
+    </head>
+
+
+    <body style="background-color: darkseagreen;">
+        <div class="container">
+            <h1 class="header" style="text-align: center;">Tree Tracker</h1>
+            
+            <a href="climbs.html">Climb database</a>
+
+            <hr>
+
+            <form class="form" id="climbForm">
+                <p>Enter Date</p>
+                <input type="date" id="date" min="2026-01-01" max="2077-12-31">
+                <script>
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, "0");
+                    const day = String(today.getDate()).padStart(2, "0");
+
+                    document.getElementById("date").value = `${year}-${month}-${day}`;
+                </script>
+                <p>Enter Tree Type</p>
+                <input type="text" id="treeType" placeholder="Oak, Birch, Pine, etc.">
+                <p>Enter Tree Diameter</p>
+                <input type="number" id="treeWidth" min="1" max="99999" placeholder="Inches">
+                <p>Enter Time Spent Climbing</p>
+                <input type="number" id="time" min="1" max="99999" placeholder="Minutes">
+                <button type="submit" id="submitButton">Submit</button>
+                <p id="statusMessage" style="display: none; color: blue;">Climb saved successfully!</p>
+            </form>
+
+            <script>
+                document.getElementById("climbForm").addEventListener("submit", async (event) =>
+                    {
+                        event.preventDefault();
+                        
+                        const climbData =
+                        {
+                            date: document.getElementById("date").value,
+                            treeType: document.getElementById("treeType").value,
+                            treeWidth: document.getElementById("treeWidth").value,
+                            time: document.getElementById("time").value
+                        };
+                        
+                        try
+                        {
+                            const res = await fetch("/save", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(climbData)
+                            });
+                            
+                            const statusMessage = document.getElementById("statusMessage");
+                            statusMessage.style.display = "block";
+                            statusMessage.style.color = "blue";
+                            statusMessage.textContent = "Climb saved successfully!";
+
+                            loadStats();
+                            
+                            setTimeout(() =>
+                            {
+                                statusMessage.style.display = "none";
+                            }, 3000);
+                            
+                        }
+                        catch (err)
+                        {
+                            const statusMessage = document.getElementById("statusMessage");
+                            statusMessage.style.display = "block";
+                            statusMessage.style.color = "red";
+                            statusMessage.textContent = "Error saving climb. " + err;
+                            
+                            setTimeout(() =>
+                            {
+                                statusMessage.style.display = "none";
+                            }, 8000);
+                        }
+                    });
+                    
+                    async function loadStats()
+                    {
+                        const response = await fetch("/stats");
+                        const stats = await response.json();
+                        const hours = Math.trunc(stats.totalTime / 60);
+                        const minutes = stats.totalTime % 60;
+                        const feet = Math.trunc(stats.biggestTree / 12);
+                        const inches = stats.biggestTree % 12;
+                        
+                        document.getElementById("totalClimbs").textContent =
+                        stats.totalClimbs;
+
+                        document.getElementById("totalDiameter").textContent =
+                        stats.totalDiameter;
+
+                        document.getElementById("totalHours").textContent =
+                        hours;
+
+                        document.getElementById("totalMinutes").textContent =
+                        minutes;
+
+                        document.getElementById("biggestTreeFeet").textContent = 
+                        feet;
+
+                        document.getElementById("biggestTreeInches").textContent = 
+                        inches;
+                    }
+                    
+                loadStats();
+            </script>
+            <noscript>Sorry your browser doesn't support JavaScript!</noscript>
+
+            <div class="stats">
+                <h2>Stats</h2>
+            
+                <p>Total Trees Climbed:
+                <span id="totalClimbs">0</span></p>
+            
+                <p>Total Time Spent Climbing:
+                <span id="totalHours">0</span> Hour(s), </span><span id="totalMinutes">0</span> Minute(s)</p>
+            
+                <p>Widest Tree Climbed:
+                <span id="biggestTreeFeet">0</span></span>' <span><span id="biggestTreeInches">0</span>"</p>
+
+                <p>Combined diamater of all climbs:
+                <span id="totalDiameter">0</span>"</p>
+            </div>
+        </div>
+    </body>
+</html>

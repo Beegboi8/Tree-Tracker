@@ -1,0 +1,138 @@
+body {
+    background: #dbe9d8;
+}
+
+.header {
+    font-family: "Averia Serif Libre", serif;
+    color: rgb(100, 58, 41);
+    font-size: 45px;
+}
+
+.container {
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 300;
+    font-style: normal;
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+}
+
+.form {
+    background: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+input {
+    width: 95%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 6px 0px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #4eac64;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2f6f3e;
+}
+
+.stats {
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.tableContainer {
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 300;
+    font-style: normal;
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+}
+
+table {
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 5px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+th {
+    background: #4eac64;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f2f2f2;
+}
+
+#refreshButton {
+    margin-top: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Fonts */
+.averia-serif-libre-light {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.averia-serif-libre-regular {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.averia-serif-libre-bold {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.averia-serif-libre-light-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.averia-serif-libre-regular-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.averia-serif-libre-bold-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 700;
+  font-style: italic;
+}

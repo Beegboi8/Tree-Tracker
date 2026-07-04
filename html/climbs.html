@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <title>Climb database</title>
+    </head>
+
+    <body style="background-color: darkseagreen;">
+        <div class="tableContainer">
+            <h1 class="header" style="text-align: center;">Climb Record</h1>
+            <a style="text-align: center;" href="index.html">Main Page</a>
+            
+            <hr>
+            
+            <table id="climbTable">
+                
+                <h2>All Climbs</h2>
+                
+                <thead style="text-align: center;">
+                    <tr>
+                        <th>Date</th>
+                        <th>Species</th>
+                        <th>Diameter</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="tableBody">
+                    
+                    </tbody>
+                    
+            </table>
+                
+                <button id="refreshButton" onclick="loadClimbs()">
+                    Refresh Entries
+                </button>
+
+            <p id="statusMessage" style="display: none; color: blue;">Climbs Updated!</p>
+        </div>
+    </body>
+
+    <script>
+    async function loadClimbs()
+    {
+        const response = await fetch("/climbs");
+        const climbs = await response.json();
+        const tableBody = document.getElementById("tableBody");
+        const statusMessage = document.getElementById("statusMessage");
+
+        tableBody.innerHTML = "";
+
+        climbs.forEach(climb =>
+        {
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${climb.Date}</td>
+                    <td>${climb.Type}</td>
+                    <td>${climb.Diameter}"</td>
+                    <td>${climb.Duration} min</td>
+                </tr>
+            `;
+        });
+
+        statusMessage.style.display = "block";
+        setTimeout(() =>
+        {
+            statusMessage.style.display = "none";
+        }, 3000);
+    }
+
+    loadClimbs();
+
+    </script>
+
+</html>

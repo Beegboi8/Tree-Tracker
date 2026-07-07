@@ -4,6 +4,9 @@ node_modules/
 # logs
 *.log
 
+#SQL Browser file
+climbs.sqbpro
+
 # OS files
 .DS_Store
 Thumbs.db

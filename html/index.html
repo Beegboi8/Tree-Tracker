@@ -37,6 +37,8 @@
                 <input type="number" id="treeWidth" min="1" max="99999" placeholder="Inches">
                 <p>Enter Time Spent Climbing</p>
                 <input type="number" id="time" min="1" max="99999" placeholder="Minutes">
+                <p>Enter Notes</p>
+                <input type="text" id="notes" placeholder="(Optional)">
                 <button type="submit" id="submitButton">Submit</button>
                 <p id="statusMessage" style="display: none; color: blue;">Climb saved successfully!</p>
             </form>
@@ -51,7 +53,8 @@
                             date: document.getElementById("date").value,
                             treeType: document.getElementById("treeType").value,
                             treeWidth: document.getElementById("treeWidth").value,
-                            time: document.getElementById("time").value
+                            time: document.getElementById("time").value,
+                            notes: document.getElementById("notes").value
                         };
                         
                         try
@@ -138,6 +141,33 @@
                 <p>Combined diamater of all climbs:
                 <span id="totalDiameter">0</span>"</p>
             </div>
+
+            <div class="weather">
+                <a class="weatherwidget-io" href="https://forecast7.com/en/44d98n93d27/minneapolis/?unit=us" 
+                data-label_1="MINNEAPOLIS" 
+                data-label_2="WEATHER" 
+                data-icons="Climacons Animated" 
+                data-theme="weather_one">
+                NEW YORK WEATHER
+                </a>
+                <script>
+                !function(d,s,id)
+                {
+                    var js,fjs=d.getElementsByTagName(s)[0];
+                    
+                    if(!d.getElementById(id))
+                    {
+                        js=d.createElement(s);
+                        js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }
+                }
+                (document,'script','weatherwidget-io-js');
+                </script>
+            </div>
+
+            <br>
+
         </div>
     </body>
 </html>

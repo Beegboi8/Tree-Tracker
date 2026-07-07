@@ -14,16 +14,17 @@ app.post("/save", (req, res) =>
 
     db.run(
     `INSERT INTO climbInfo
-    (Date, Type, Diameter, Duration)
-    VALUES (?, ?, ?, ?)`,
+    (Date, Type, Diameter, Duration, Notes)
+    VALUES (?, ?, ?, ?, ?)`,
     [
         req.body.date,
         req.body.treeType,
         req.body.treeWidth,
-        req.body.time
+        req.body.time,
+        req.body.notes
     ]
     );
-
+    
     console.log("Data saved to database!");
     res.send("Saved!");
 });

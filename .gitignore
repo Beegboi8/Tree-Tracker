@@ -7,6 +7,3 @@ node_modules/
 # OS files
 .DS_Store
 Thumbs.db
-
-# environment files (if you use them later)
-.env

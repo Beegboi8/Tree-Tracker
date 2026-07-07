@@ -28,12 +28,13 @@
                         <th>Species</th>
                         <th>Diameter</th>
                         <th>Time</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 
                 <tbody id="tableBody">
                     
-                    </tbody>
+                </tbody>
                     
             </table>
                 
@@ -63,6 +64,7 @@
                     <td>${climb.Type}</td>
                     <td>${climb.Diameter}"</td>
                     <td>${climb.Duration} min</td>
+                    <td>${climb.Notes || ""}</td>
                 </tr>
             `;
         });

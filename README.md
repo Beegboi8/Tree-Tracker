@@ -1,5 +1,9 @@
 # Tree Tracker website
 
+Website for tracking tree climbs
+
+<hr>
+
 The install script should install all dependencies for the server to run
 
 EXCEPT

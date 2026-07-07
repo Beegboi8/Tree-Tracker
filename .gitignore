@@ -5,7 +5,7 @@ node_modules/
 *.log
 
 #SQL Browser file
-climbs.sqbpro
+*.sqbpro 
 
 # OS files
 .DS_Store
